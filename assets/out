@@ -106,7 +106,7 @@ parse() {
         fi
     ;;
     $SERVICE|$SV)
-        port_values=$(jq -r ".params.port_values[]? | if .name and .port then (\"$(printf "%2s")\"+\"- name: \"+.name + \"\n$(printf "%4s")port: \"  + .port) else empty end "  < $payload)
+        port_values=$(jq -r ".params.port_values[]? | if .name and .port and .targetPort then (\"$(printf "%2s")\"+\"- name: \"+.name + \"\n$(printf "%4s")port: \"  + .port + \"\n$(printf "%4s")targetPort: \"  + .targetPort) else empty end " < $payload)
         expose_type=$(jq -r '.params.expose_type // "ClusterIP"' < "$payload")
         cluster_ip=$(jq -r "if .params.stateful == true then (\"$(printf "%2s")\"+\"clusterIP: \"+\"None\") else empty end "  < $payload)
     ;;
