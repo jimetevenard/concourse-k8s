@@ -1,20 +1,17 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: $resource_name
-  namespace: $namespace
-  labels:
-    app: $resource_name
-  annotations:
-    kubernetes.io/ingress.class: $ingress_class
-    ingress.kubernetes.io/rewrite-target: /
-    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: $ingress_class
   rules:
   - host: $host
     http:
       paths:
       - path: $path
+        pathType: Prefix
         backend:
-          serviceName: $resource_name
-          servicePort: $service_port
+          service:
+            name: $resource_name
+            port:
+              number: $service_port
