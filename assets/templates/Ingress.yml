@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: $resource_name
 spec:
-  ingressClassName: $ingress_class
   rules:
   - host: $host
     http:
