@@ -2,6 +2,19 @@
 
 Deploy to [Kubernetes](https://github.com/kubernetes/kubernetes) from [Concourse](https://concourse.ci/).
 
+> **Warning**
+>
+>  ### Important Advisory
+>  
+> This repository **forks the [unmaintained original version](https://github.com/srinivasa-vasu/concourse-k8s)**, wich is still (as feb 2023)
+> featured on the [concourse-CI official *resource-types repository*](https://resource-types.concourse-ci.org/)
+>
+> It [quickly-fixes](https://github.com/jimetevenard/concourse-k8s/commits/master) some obvious bugs and outdated features
+> (like usage of the legacy API format for Ingresses) but is only meant for training / demonstrating purposes
+> 
+> Please note that **I will not accept any Issue / PR on this repo.**  
+> *Regards, Jim Etevenard*
+
 ## Resource Type
 
 Define the resource type in the pipeline:
@@ -10,7 +23,7 @@ resource_types:
 - name: k8s
   type: docker-image
   source:
-    repository: docker pull ghcr.io/jimetevenard/concourse-k8s
+    repository: ghcr.io/jimetevenard/concourse-k8s
     tag: master
 ```
 ## Source Configuration
