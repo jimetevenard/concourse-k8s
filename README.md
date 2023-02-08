@@ -10,7 +10,8 @@ resource_types:
 - name: k8s
   type: docker-image
   source:
-    repository: srinivasavasu/concourse-k8s
+    repository: docker pull ghcr.io/jimetevenard/concourse-k8s
+    tag: master
 ```
 ## Source Configuration
 
